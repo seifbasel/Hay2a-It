@@ -23,8 +23,26 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronLeft } from "lucide-react";
 
-// Mock Soldier Data (Replace with API Fetch Later)
-const soldiers = [
+// ✅ Define TypeScript types
+type Fault = {
+  name: string;
+  description: string;
+  time: string;
+};
+
+type Soldier = {
+  id: string;
+  name: string;
+  position: string;
+  email: string;
+  arrivedAt: string;
+  status: "Active" | "Inactive" | "On Leave";
+  faultsFixedPerDay: number;
+  faultHistory: Fault[];
+};
+
+// ✅ Mock Data (Replace with API Fetch Later)
+const soldiers: Soldier[] = [
   {
     id: "1",
     name: "John Doe",
@@ -65,17 +83,16 @@ const soldiers = [
 ];
 
 export default function SoldierDetailsPage() {
-  const { id } = useParams(); // Get soldier ID from URL
-  const [soldier, setSoldier] = useState<any>(null);
+  const params = useParams();
+  const id = params.id as string; // ✅ Ensure id is a string
+  const [soldier, setSoldier] = useState<Soldier | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
-      const selectedSoldier = soldiers.find((s) => s.id === id);
-      if (selectedSoldier) {
-        setSoldier(selectedSoldier);
-      }
+      const selectedSoldier = soldiers.find((s) => s.id === id) || null;
+      setSoldier(selectedSoldier);
       setLoading(false);
     }, 1000); // Simulate API delay
   }, [id]);
@@ -112,23 +129,53 @@ export default function SoldierDetailsPage() {
           </div>
           <div>
             <Label className="pb-4">Position</Label>
-            <Input value={soldier.position} onChange={(e) => setSoldier({ ...soldier, name: e.target.value })}/>
+            <Input
+              value={soldier.position}
+              onChange={(e) =>
+                setSoldier({ ...soldier, position: e.target.value })
+              }
+            />
           </div>
           <div>
             <Label className="pb-4">Email</Label>
-            <Input value={soldier.email} onChange={(e) => setSoldier({ ...soldier, name: e.target.value })}/>
+            <Input
+              value={soldier.email}
+              onChange={(e) =>
+                setSoldier({ ...soldier, email: e.target.value })
+              }
+            />
           </div>
           <div>
             <Label className="pb-4">Arrived At</Label>
-            <Input type="date" value={soldier.arrivedAt} onChange={(e) => setSoldier({ ...soldier, name: e.target.value })}/>
+            <Input
+              type="date"
+              value={soldier.arrivedAt}
+              onChange={(e) =>
+                setSoldier({ ...soldier, arrivedAt: e.target.value })
+              }
+            />
           </div>
           <div>
             <Label className="pb-4">Faults Fixed Per Day</Label>
-            <Input type="number" value={soldier.faultsFixedPerDay} onChange={(e) => setSoldier({ ...soldier, name: e.target.value })}/>
+            <Input
+              type="number"
+              value={soldier.faultsFixedPerDay}
+              onChange={(e) =>
+                setSoldier({
+                  ...soldier,
+                  faultsFixedPerDay: Number(e.target.value),
+                })
+              }
+            />
           </div>
           <div>
             <Label className="pb-4">Status</Label>
-            <Select defaultValue={soldier.status} disabled>
+            <Select
+              value={soldier.status}
+              onValueChange={(value) =>
+                setSoldier({ ...soldier, status: value as Soldier["status"] })
+              }
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Select status" />
               </SelectTrigger>
@@ -158,7 +205,7 @@ export default function SoldierDetailsPage() {
             </TableHeader>
             <TableBody>
               {soldier.faultHistory.length > 0 ? (
-                soldier.faultHistory.map((fault: any, index: number) => (
+                soldier.faultHistory.map((fault, index) => (
                   <TableRow key={index}>
                     <TableCell>{fault.name}</TableCell>
                     <TableCell>{fault.description}</TableCell>
