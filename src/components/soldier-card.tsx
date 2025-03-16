@@ -29,7 +29,7 @@ const SoldierCard = ({
 
   return (
     <div
-      onClick={() => router.push(`/soldiers/view-soldier/${id}`)}
+      onClick={() => router.push(`/soldiers/${id}`)}
       className="border border-gray-700 rounded-lg p-6 hover:bg-gray-800/50 transition cursor-pointer shadow-lg flex flex-col gap-3 relative"
     >
       {/* Status Badge */}
