@@ -1,12 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
-  const router = useRouter(); // ✅ Added Router for Navigation
+  const router = useRouter(); 
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background text-foreground transition-colors duration-300">
