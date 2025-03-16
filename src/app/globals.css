@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-light-bg: #edf5ef;  
-  --color-dark-bg: #151715;  
-  --color-primary: #7a898f;  
-  --color-accent: #c6c18c;  
+  --color-light-bg: #edf5ef;
+  --color-dark-bg: #151715;
+  --color-primary: #7a898f;
+  --color-accent: #c6c18c;
   --color-secondary: #1b476d;
 }
 
