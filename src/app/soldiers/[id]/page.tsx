@@ -21,7 +21,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Trash } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // ✅ Define TypeScript types
 type Fault = {
@@ -39,16 +40,18 @@ type Soldier = {
   status: "Active" | "Inactive" | "On Leave";
   faultsFixedPerDay: number;
   faultHistory: Fault[];
+  current_place?: string;
 };
 
 // ✅ Mock Data (Replace with API Fetch Later)
 const soldiers: Soldier[] = [
   {
     id: "1",
-    name: "John Doe",
-    position: "Technician",
-    email: "johndoe@example.com",
+    name: "mahmoud hawash",
+    position: "frontend developer",
+    email: "hawash@gmail.com",
     arrivedAt: "2024-03-10",
+    current_place: "hay2a it office",
     status: "Active",
     faultsFixedPerDay: 5,
     faultHistory: [
@@ -66,17 +69,35 @@ const soldiers: Soldier[] = [
   },
   {
     id: "2",
-    name: "Jane Smith",
-    position: "Network Engineer",
-    email: "janesmith@example.com",
+    name: "seif basel",
+    position: "backend developer",
+    email: "seif@gmail.com",
     arrivedAt: "2024-03-05",
+    current_place: "hay2a it office",
     status: "Inactive",
-    faultsFixedPerDay: 3,
+    faultsFixedPerDay: 7,
     faultHistory: [
       {
         name: "VPN Issue",
         description: "Reconfigured VPN settings",
         time: "9:15 AM",
+      },
+    ],
+  },
+  {
+    id: "3",
+    name: "omar ayman",
+    position: "ai engineer",
+    email: "omar@gmail.com",
+    arrivedAt: "2024-03-05",
+    current_place: "hospital",
+    status: "Inactive",
+    faultsFixedPerDay: 2,
+    faultHistory: [
+      {
+        name: "monitor Issue",
+        description: "Reconfigured screen settings",
+        time: "9:00 AM",
       },
     ],
   },
@@ -113,12 +134,18 @@ export default function SoldierDetailsPage() {
     <div className="p-6 min-h-screen">
       {/* Soldier Details Form */}
       <Card className="mb-6">
-        <CardHeader className="flex items-center gap-2 mb-6">
-          <button onClick={() => router.push("/soldiers")}>
-            <ChevronLeft className="w-6 h-6 cursor-pointer" />
-          </button>
-          <CardTitle>Soldier Information</CardTitle>
+        <CardHeader className="flex items-center justify-between w-full mb-6">
+          <div className="flex items-center gap-2">
+            <Button onClick={() => router.push("/soldiers")} variant={"default"} size="icon">
+              <ChevronLeft className="w-6 h-6 cursor-pointer" />
+            </Button>
+            <CardTitle>Soldier Information</CardTitle>
+          </div>
+          <Button className="flex" variant="destructive" size="icon">
+            <Trash />
+          </Button>
         </CardHeader>
+
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <Label className="pb-4">Name</Label>
@@ -157,14 +184,14 @@ export default function SoldierDetailsPage() {
           </div>
           <div>
             <Label className="pb-4">Faults Fixed Per Day</Label>
+            <Input type="number" value={soldier.faultsFixedPerDay} readOnly />
+          </div>
+          <div>
+            <Label className="pb-4">Current place</Label>
             <Input
-              type="number"
-              value={soldier.faultsFixedPerDay}
+              value={soldier.current_place}
               onChange={(e) =>
-                setSoldier({
-                  ...soldier,
-                  faultsFixedPerDay: Number(e.target.value),
-                })
+                setSoldier({ ...soldier, current_place: e.target.value })
               }
             />
           </div>
