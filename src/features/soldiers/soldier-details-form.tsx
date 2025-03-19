@@ -48,7 +48,7 @@ export default function SoldierDetailsForm({
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="Active">🟢 Active</SelectItem>
+            <SelectItem value="In duty">🟢 In duty</SelectItem>
             <SelectItem value="Inactive">🔴 Inactive</SelectItem>
             <SelectItem value="On Leave">🟡 On Leave</SelectItem>
           </SelectContent>

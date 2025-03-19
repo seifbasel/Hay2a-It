@@ -63,7 +63,7 @@ const OfficerCard = ({
       </div>
 
       {/* Rank & Additional Info */}
-      <div className="text-sm text-foreground grid grid-cols-2 gap-2 mt-2">
+      <div className="text-sm text-foreground grid grid-cols-1 gap-2 mt-2">
         <p>
           <strong>Rank:</strong> {rankIcons[rank] || rank}
         </p>
