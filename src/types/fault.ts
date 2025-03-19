@@ -1,13 +1,14 @@
-type fault = {
+type Fault = {
   id: string;
   name: string;
   description: string;
   time: string;
+  date: string;
   assignedOfficer: string;
   assignedSoldier: string;
-  stautes: "Fixed" | "Not Fixed";
+  fixed: boolean;
   createdAt: string;
   fixedAt: string;
 };
 
-export default fault;
+export default Fault;

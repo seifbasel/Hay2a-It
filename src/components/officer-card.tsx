@@ -1,10 +1,10 @@
-// SoldierCard.tsx
+// OfficerCard.tsx
 "use client";
 
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import Soldier from "@/types/soldier";
+import Officer from "@/types/officer";
 
 const statusColors = {
   "In duty": "bg-green-500",
@@ -12,21 +12,31 @@ const statusColors = {
   Inactive: "bg-red-500",
 };
 
-const SoldierCard = ({
+const rankIcons = {
+  General: "🦅", // Eagle for General
+  Colonel: "⭐⭐⭐⭐",
+  Major: "⭐⭐⭐",
+  Captain: "⭐⭐",
+  Lieutenant: "⭐",
+} as const;
+
+type RankType = keyof typeof rankIcons;
+
+const OfficerCard = ({
   name,
   position,
   id,
   status,
   current_place,
   arrivedAt,
-  faultsFixedPerDay,
-}: Soldier) => {
+  rank,
+}: Officer & { rank: RankType }) => {
   const router = useRouter();
   const firstLetter = name.charAt(0).toUpperCase();
 
   return (
     <div
-      onClick={() => router.push(`/soldiers/${id}`)}
+      onClick={() => router.push(`/officers/${id}`)}
       className="border border-gray-700 rounded-lg p-6 hover:bg-gray-800/50 transition cursor-pointer shadow-lg flex flex-col gap-4 relative"
     >
       {/* Status Badge */}
@@ -41,7 +51,7 @@ const SoldierCard = ({
 
       {/* Avatar & Name */}
       <div className="flex items-center gap-3">
-        <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center text-lg font-bold text-white shadow-md">
+        <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-lg font-bold text-white shadow-md">
           {firstLetter}
         </div>
         <div>
@@ -52,16 +62,16 @@ const SoldierCard = ({
         </div>
       </div>
 
-      {/* Additional Info */}
-      <div className="text-sm text-foreground grid grid-cols-1 gap-2 mt-2">
+      {/* Rank & Additional Info */}
+      <div className="text-sm text-foreground grid grid-cols-2 gap-2 mt-2">
+        <p>
+          <strong>Rank:</strong> {rankIcons[rank] || rank}
+        </p>
         <p>
           <strong>Current Place:</strong> {current_place}
         </p>
         <p>
           <strong>Arrived:</strong> {new Date(arrivedAt).toLocaleDateString()}
-        </p>
-        <p>
-          <strong>Faults Fixed/Day:</strong> {faultsFixedPerDay}
         </p>
       </div>
 
@@ -73,4 +83,4 @@ const SoldierCard = ({
   );
 };
 
-export default SoldierCard;
+export default OfficerCard;

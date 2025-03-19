@@ -1,15 +1,15 @@
-import fault from "./fault";
+import Fault from "./fault";
+import SoldierStatus from "./soldier-status";
 
-type soldier = {
+type Soldier = {
   id: string;
   name: string;
   position: string;
-  email: string;
   arrivedAt: string;
   current_place?: string;
-  status: "In duty" | "Inactive" | "On Leave";
+  status:SoldierStatus;
   faultsFixedPerDay: number;
-  faultHistory: fault[];
+  faultHistory?: Fault[];
 };
 
-export default soldier;
+export default Soldier;

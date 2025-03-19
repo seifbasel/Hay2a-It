@@ -1,12 +1,14 @@
-type officer = {
+import { Rank } from "./rank";
+import SoldierStatus from "./soldier-status";
+
+type Officer = {
   id: string;
   name: string;
   position: string;
-  rank: string;
-  email: string;
+  rank: Rank;
   arrivedAt: string;
   current_place?: string;
-  status: "In duty" | "Inactive" | "On Leave";
+  status: SoldierStatus;
 };
 
-export default officer;
+export default Officer;

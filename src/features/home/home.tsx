@@ -2,9 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { OctagonAlert } from "lucide-react";
 
 export default function Home() {
-  const router = useRouter(); 
+  const router = useRouter();
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background text-foreground transition-colors duration-300">
@@ -27,7 +28,10 @@ export default function Home() {
           </div>
 
           {/* Officers Card */}
-          <div className="bg-card p-6 rounded-xl shadow-lg flex flex-col items-center w-60 hover:scale-105 transition">
+          <div
+            className="bg-card p-6 rounded-xl shadow-lg flex flex-col items-center w-60 hover:scale-105 transition"
+            onClick={() => router.push("/officers")}
+          >
             <Image
               src="/officer.png"
               alt="Officers"
@@ -40,13 +44,7 @@ export default function Home() {
 
           {/* Faults Card */}
           <div className="bg-card p-6 rounded-xl shadow-lg flex flex-col items-center w-60 hover:scale-105 transition">
-            <Image
-              src="/error.png"
-              alt="Faults"
-              width={150}
-              height={200}
-              className="text-primary w-35 h-35"
-            />
+            <OctagonAlert className="text-primary w-35 h-35" />
             <p className="mt-4 text-lg font-semibold">Faults</p>
           </div>
         </div>
