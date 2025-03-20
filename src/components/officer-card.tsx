@@ -9,7 +9,7 @@ import Officer from "@/types/officer";
 const statusColors = {
   "In duty": "bg-green-500",
   "On Leave": "bg-yellow-500",
-  Inactive: "bg-red-500",
+  "Inactive": "bg-red-500",
 };
 
 const rankIcons = {
@@ -28,7 +28,7 @@ const OfficerCard = ({
   id,
   status,
   current_place,
-  arrivedAt,
+  arrived_at,
   rank,
 }: Officer & { rank: RankType }) => {
   const router = useRouter();
@@ -71,7 +71,7 @@ const OfficerCard = ({
           <strong>Current Place:</strong> {current_place}
         </p>
         <p>
-          <strong>Arrived:</strong> {new Date(arrivedAt).toLocaleDateString()}
+          <strong>Arrived:</strong> {new Date(arrived_at).toLocaleDateString()}
         </p>
       </div>
 
