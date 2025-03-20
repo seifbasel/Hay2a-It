@@ -19,7 +19,7 @@ const SoldierCard = ({
   status,
   current_place,
   arrived_at,
-  faultsFixedPerDay,
+  faults_Fixed_Per_Day,
 }: Soldier) => {
   const router = useRouter();
   const firstLetter = name.charAt(0).toUpperCase();
@@ -61,7 +61,7 @@ const SoldierCard = ({
           <strong>Arrived:</strong> {new Date(arrived_at).toLocaleDateString()}
         </p>
         <p>
-          <strong>Faults Fixed/Day:</strong> {faultsFixedPerDay}
+          <strong>Faults Fixed/Day:</strong> {faults_Fixed_Per_Day}
         </p>
       </div>
 

@@ -101,7 +101,7 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
                       }
                       value={
                         faultAssignments[fault.id]?.soldier ||
-                        fault.assignedSoldier
+                        fault.assigned_Soldier
                       }
                     >
                       <SelectTrigger>
@@ -123,7 +123,7 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
                       }
                       value={
                         faultAssignments[fault.id]?.officer ||
-                        fault.assignedOfficer
+                        fault.assigned_Officer
                       }
                     >
                       <SelectTrigger>

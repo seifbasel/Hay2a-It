@@ -9,8 +9,8 @@ type Soldier = {
   arrived_at: string;
   current_place?: string;
   status:SoldierStatus;
-  faultsFixedPerDay: number;
-  faultHistory?: Fault[];
+  faults_Fixed_Per_Day: number;
+  faults_History?: Fault[];
 };
 
 export default Soldier;

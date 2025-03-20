@@ -46,7 +46,7 @@ export default function SoldiersPage() {
             status={soldier.status}
             arrived_at={soldier.arrived_at}
             current_place={soldier.current_place}
-            faultsFixedPerDay={soldier.faultsFixedPerDay}
+            faults_Fixed_Per_Day={soldier.faults_Fixed_Per_Day}
           />
         ))}
       </div>

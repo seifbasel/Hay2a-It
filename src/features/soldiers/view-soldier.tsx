@@ -49,7 +49,7 @@ export default function SoldierDetailsPage() {
         <CardHeader>
           <CardTitle>Fault History</CardTitle>
         </CardHeader>
-        <FaultHistoryTable faults={soldier.faultHistory ?? []} />
+        <FaultHistoryTable faults={soldier.faults_History ?? []} />
       </Card>
     </div>
   );

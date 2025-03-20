@@ -2,13 +2,11 @@ type Fault = {
   id: string;
   name: string;
   description: string;
-  time: string;
-  date: string;
-  assignedOfficer: string;
-  assignedSoldier: string;
+  assigned_Officer: string;
+  assigned_Soldier: string;
   fixed: boolean;
   reported_at: string;
-  fixedAt: string;
+  fixed_at: string;
 };
 
 export default Fault;

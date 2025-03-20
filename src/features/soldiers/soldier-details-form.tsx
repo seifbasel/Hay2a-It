@@ -41,7 +41,7 @@ export default function SoldierDetailsForm({
       </div>
       <div>
         <Label className="pb-2">Faults Fixed Per Day</Label>
-        <Input type="number" value={soldier.faultsFixedPerDay} readOnly />
+        <Input type="number" value={soldier.faults_Fixed_Per_Day} readOnly />
       </div>
       <div>
         <Label className="pb-2">Current Place</Label>

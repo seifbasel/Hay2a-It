@@ -32,7 +32,7 @@ export default function FaultHistoryTable({ faults }: FaultHistoryTableProps) {
               <TableRow key={fault.id}>
                 <TableCell>{fault.name}</TableCell>
                 <TableCell>{fault.description}</TableCell>
-                <TableCell>{fault.time}</TableCell>
+                <TableCell>{fault.fixed_at}</TableCell>
               </TableRow>
             ))
           ) : (
