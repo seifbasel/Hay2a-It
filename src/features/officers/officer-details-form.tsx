@@ -11,45 +11,45 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Soldier from "@/types/soldier";
+import Officer from "@/types/officer";
 import { CircleCheck } from "lucide-react";
 
-type SoldierDetailsFormProps = {
-  soldier: Soldier;
+type OfficerDetailsFormProps = {
+  officer: Officer;
 };
 
-export default function SoldierDetailsForm({
-  soldier,
-}: SoldierDetailsFormProps) {
+export default function OfficerDetailsForm({
+  officer,
+}: OfficerDetailsFormProps) {
   return (
     <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <Label className="pb-2">Name</Label>
-        <Input value={soldier.name} readOnly />
+        <Input value={officer.name} readOnly />
       </div>
       <div>
         <Label className="pb-2">Position</Label>
-        <Input value={soldier.position} readOnly />
+        <Input value={officer.position} readOnly />
       </div>
       <div>
         <Label className="pb-2">phone</Label>
-        <Input value={soldier.phone} readOnly />
+        <Input value={officer.phone} readOnly />
       </div>
       <div>
         <Label className="pb-2">Arrived At</Label>
-        <Input type="date" value={soldier.arrived_at} readOnly />
+        <Input type="date" value={officer.arrived_at} readOnly />
       </div>
       <div>
-        <Label className="pb-2">Faults Fixed Per Day</Label>
-        <Input type="number" value={soldier.faultsFixedPerDay} readOnly />
+        <Label className="pb-2">Rank</Label>
+        <Input value={officer.rank} readOnly />
       </div>
       <div>
         <Label className="pb-2">Current Place</Label>
-        <Input value={soldier.current_place} readOnly />
+        <Input value={officer.current_place} readOnly />
       </div>
       <div>
         <Label className="pb-2">Status</Label>
-        <Select value={soldier.status} disabled>
+        <Select value={officer.status} disabled>
           <SelectTrigger>
             <SelectValue placeholder="Select status" />
           </SelectTrigger>

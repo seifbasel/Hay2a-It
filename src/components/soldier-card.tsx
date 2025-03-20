@@ -18,7 +18,7 @@ const SoldierCard = ({
   id,
   status,
   current_place,
-  arrivedAt,
+  arrived_at,
   faultsFixedPerDay,
 }: Soldier) => {
   const router = useRouter();
@@ -58,7 +58,7 @@ const SoldierCard = ({
           <strong>Current Place:</strong> {current_place}
         </p>
         <p>
-          <strong>Arrived:</strong> {new Date(arrivedAt).toLocaleDateString()}
+          <strong>Arrived:</strong> {new Date(arrived_at).toLocaleDateString()}
         </p>
         <p>
           <strong>Faults Fixed/Day:</strong> {faultsFixedPerDay}

@@ -43,7 +43,10 @@ export default function Home() {
           </div>
 
           {/* Faults Card */}
-          <div className="bg-card p-6 rounded-xl shadow-lg flex flex-col items-center w-60 hover:scale-105 transition">
+          <div
+            className="bg-card p-6 rounded-xl shadow-lg flex flex-col items-center w-60 hover:scale-105 transition"
+            onClick={() => router.push("/faults")}
+          >
             <OctagonAlert className="text-primary w-35 h-35" />
             <p className="mt-4 text-lg font-semibold">Faults</p>
           </div>

@@ -7,7 +7,7 @@ type Fault = {
   assignedOfficer: string;
   assignedSoldier: string;
   fixed: boolean;
-  createdAt: string;
+  reported_at: string;
   fixedAt: string;
 };
 

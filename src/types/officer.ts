@@ -5,8 +5,9 @@ type Officer = {
   id: string;
   name: string;
   position: string;
+  phone: string;
   rank: Rank;
-  arrivedAt: string;
+  arrived_at: string;
   current_place?: string;
   status: SoldierStatus;
 };

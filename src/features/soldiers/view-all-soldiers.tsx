@@ -41,9 +41,10 @@ export default function SoldiersPage() {
             key={soldier.id}
             id={soldier.id}
             name={soldier.name}
+            phone={soldier.phone}
             position={soldier.position}
             status={soldier.status}
-            arrivedAt={soldier.arrivedAt}
+            arrived_at={soldier.arrived_at}
             current_place={soldier.current_place}
             faultsFixedPerDay={soldier.faultsFixedPerDay}
           />

@@ -41,10 +41,11 @@ export default function OfficersPage() {
             key={officer.id}
             id={officer.id}
             name={officer.name}
+            phone={officer.phone}
             rank={officer.rank}
             position={officer.position}
             status={officer.status}
-            arrivedAt={officer.arrivedAt}
+            arrived_at={officer.arrived_at}
             current_place={officer.current_place}
           />
         ))}
