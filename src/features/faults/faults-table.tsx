@@ -57,7 +57,7 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
           <CardTitle className="text-xl font-semibold">
             <div className="flex items-center gap-2">
               <Button
-                onClick={() => router.push("/officers")}
+                onClick={() => router.push("/")}
                 variant="default"
                 size="icon"
                 aria-label="Go back"
