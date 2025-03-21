@@ -20,19 +20,23 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Fault from "@/types/fault";
-import { ChevronLeft, PlusIcon } from "lucide-react";
+import { ChevronLeft, PlusIcon, Trash2Icon, CheckIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface FaultsTableProps {
   faults: Fault[];
   soldiers: { id: string; name: string }[];
   officers: { id: string; name: string }[];
+  onDeleteFault?: (faultId: string) => void;
+  onToggleFaultFixed?: (faultId: string) => void;
 }
 
 const FaultsTable: React.FC<FaultsTableProps> = ({
   faults,
   soldiers,
   officers,
+  onDeleteFault,
+  onToggleFaultFixed,
 }) => {
   const [faultAssignments, setFaultAssignments] = useState<{
     [key: string]: { soldier: string; officer: string };
@@ -52,7 +56,7 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
 
   return (
     <div className="p-6 min-h-screen">
-      <Card className="w-full  shadow-md rounded-lg">
+      <Card className="w-full shadow-md rounded-lg">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl font-semibold">
             <div className="flex items-center gap-2">
@@ -64,7 +68,7 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
               >
                 <ChevronLeft className="w-6 h-6" />
               </Button>
-              officer Information
+              Fault Information
             </div>
           </CardTitle>
           <Button variant="default">
@@ -80,6 +84,7 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
                 <TableHead>Status</TableHead>
                 <TableHead>Assigned Soldier</TableHead>
                 <TableHead>Assigning Officer</TableHead>
+                <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -137,6 +142,28 @@ const FaultsTable: React.FC<FaultsTableProps> = ({
                         ))}
                       </SelectContent>
                     </Select>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex items-center space-x-2">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => onToggleFaultFixed?.(fault.id)}
+                        title={
+                          fault.fixed ? "Mark as Unfixed" : "Mark as Fixed"
+                        }
+                      >
+                        <CheckIcon className="w-4 h-4 text-green-500 " />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => onDeleteFault?.(fault.id)}
+                        title="Delete Fault"
+                      >
+                        <Trash2Icon className="w-4 h-4 text-destructive" />
+                      </Button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}
